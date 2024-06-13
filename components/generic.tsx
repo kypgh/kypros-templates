@@ -5,6 +5,26 @@ import { usePathname } from "next/navigation";
 import { DefaultTheme } from "styled-components/dist/types";
 import { FlexEnums } from "@/config/cssEnums";
 
+export const SourceLink = styled(Link)`
+  color: ${({ theme }) => theme.textPrimary};
+  font-weight: bold;
+  padding: 2px;
+  border-radius: 5px;
+  background-color: ${({ theme }) => theme.primary};
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+
+  &::before {
+    content: "View Source Code";
+  }
+
+  &::after {
+    content: "👀";
+    padding-left: 5px;
+  }
+`;
+
 interface CustomLinkProps extends NextLinkProps {
   children: ReactNode;
   isActive?: boolean;

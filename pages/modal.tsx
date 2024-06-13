@@ -1,9 +1,8 @@
 import ModalComp from "@/components/Modal";
-import { Flex, PageContainer } from "@/components/generic";
+import { Flex, PageContainer, SourceLink } from "@/components/generic";
 import { H2, H3 } from "@/components/typography";
 import styled from "styled-components";
 import SyntaxHighlighter from "@/components/SyntaxHighlighter";
-import FlexPage from "./flex";
 
 const ModalOuter = styled.div`
   display: flex;
@@ -30,7 +29,7 @@ const ModalContent = ({ modalData }: { modalData?: any }) => {
 };
 
 const modalCode = `
-// This is the Modal Content that will be shown when the modal is opened
+// This is the ModalContent that will be shown when the modal is opened
 // If you pass any data to the openModal function, it will be passed to the ModalContent as modalData
 const ModalContent = ({ modalData }: { modalData?: any }) => {
     return (
@@ -77,7 +76,9 @@ const Modal = () => {
 
   return (
     <PageContainer>
-      <H2 $mb={10}>Code</H2>
+      <SourceLink href="/source-code?filePath=components/Modal.tsx" />
+
+      <H2 $mb={10}>Code </H2>
       <SyntaxHighlighter>{modalCode}</SyntaxHighlighter>
       <H2 $mb={10}>Example</H2>
       <Flex $gap={20}>

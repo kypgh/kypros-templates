@@ -1,6 +1,10 @@
 import React, { ChangeEvent, useState } from "react";
 import SyntaxHighlighter from "../components/SyntaxHighlighter";
-import { Flex as FlexSC, PageContainer } from "../components/generic";
+import {
+  Flex as FlexSC,
+  PageContainer,
+  SourceLink,
+} from "../components/generic";
 import { Code, H2, Select } from "../components/typography";
 import { FlexEnums } from "@/config/cssEnums";
 
@@ -45,6 +49,7 @@ const Example = () => {
 
   return (
     <PageContainer>
+      <SourceLink href="/source-code?filePath=components/generic.tsx" />
       <H2>Code</H2>
       <SyntaxHighlighter>{flexCode}</SyntaxHighlighter>
       <FlexSC $width="100%" $gap={50}>
