@@ -3,6 +3,7 @@ import Link, { LinkProps as NextLinkProps } from "next/link";
 import styled from "styled-components";
 import { usePathname } from "next/navigation";
 import { DefaultTheme } from "styled-components/dist/types";
+import { FlexEnums } from "@/config/cssEnums";
 
 interface CustomLinkProps extends NextLinkProps {
   children: ReactNode;
@@ -71,16 +72,10 @@ export const Container = styled.div.attrs<ContainerTypes>(
 `;
 
 type FlexProps = {
-  $align?: "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
-  $justify?:
-    | "flex-start"
-    | "flex-end"
-    | "center"
-    | "space-between"
-    | "space-around"
-    | "space-evenly";
-  $direction?: "row" | "row-reverse" | "column" | "column-reverse";
-  $wrap?: "nowrap" | "wrap" | "wrap-reverse";
+  $align?: (typeof FlexEnums.align)[number];
+  $justify?: (typeof FlexEnums.justify)[number];
+  $direction?: (typeof FlexEnums.direction)[number];
+  $wrap?: (typeof FlexEnums.wrap)[number];
   $gap?: number;
   $width?: string;
   $mb?: number;
@@ -108,7 +103,7 @@ export const Flex = styled.div.attrs<FlexProps>(
   justify-content: ${({ $justify }) => $justify};
   flex-direction: ${({ $direction }) => $direction};
   ${({ $width }) => $width && `width: ${$width};`}
-  gap: ${({ $gap }) => $gap}px;
+  gap: ${({ $gap }) => $gap && `${$gap}px`};
   ${({ $wrap }) => $wrap && `flex-wrap: ${$wrap};`}
   ${({ $mb }) => $mb && `margin-bottom: ${$mb}px;`}
   ${({ $mt }) => $mt && `margin-top: ${$mt}px;`}
@@ -172,4 +167,8 @@ export const Background = styled.div.attrs<BackgroundProps>(
   ${({ $pl }) => $pl && `padding-left: ${$pl}px;`}
   ${({ $pr }) => $pr && `padding-right: ${$pr}px;`}
   ${({ $pall }) => $pall && `padding: ${$pall}px;`}
+`;
+
+export const PageContainer = styled.div`
+  padding: 15px;
 `;

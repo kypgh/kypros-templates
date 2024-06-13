@@ -147,4 +147,25 @@ const Ul = ({ children, Prefix, position }: ULProps) => {
   );
 };
 
-export { H1, H2, H3, Li, Ul };
+const Code = styled.code`
+  font-family: "Fira Code", monospace;
+  font-size: 14px;
+  padding: 2px 4px;
+  background-color: ${({ theme }) => theme.primary};
+  border-radius: 4px;
+  color: ${({ theme }) => theme.textPrimary};
+  margin: 0 2px;
+`;
+
+const Select = styled.select`
+  border-radius: 5px;
+  font-size: 14px;
+  color: ${({ theme }) => theme.textPrimary};
+  background-color: ${({ theme }) => theme.primary};
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export { H1, H2, H3, Li, Ul, Code, Select };
