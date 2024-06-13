@@ -1,3 +1,4 @@
+// pages/api/read-file.ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
@@ -7,7 +8,7 @@ type Data = {
   error?: string;
 };
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
@@ -18,27 +19,23 @@ export default function handler(
     return;
   }
 
-  // Normalize the path to prevent directory traversal attacks
-  const normalizedPath = path
-    .normalize(filePath)
-    .replace(/^(\.\.(\/|\\|$))+/, "");
-  const fullPath = path.join(process.cwd(), normalizedPath);
+  try {
+    // Construct the full path
+    const rootPath = process.cwd(); // This might need adjustment in a serverless environment like Vercel
+    const fullPath = path.join(rootPath, filePath as string);
 
-  console.log("Requested filePath:", filePath);
-  console.log("Normalized path:", normalizedPath);
-  console.log("Full path:", fullPath);
-
-  // Check if the file exists
-  if (!fs.existsSync(fullPath)) {
-    res.status(404).json({ error: "File not found" });
-    return;
-  }
-
-  fs.readFile(fullPath, "utf8", (err, data) => {
-    if (err) {
-      res.status(500).json({ error: "Error reading file" });
+    // Check if the file exists
+    if (!fs.existsSync(fullPath)) {
+      res.status(404).json({ error: "File not found" });
       return;
     }
-    res.status(200).json({ content: data });
-  });
+
+    // Read file contents
+    const fileContent = await fs.promises.readFile(fullPath, "utf-8");
+
+    res.status(200).json({ content: fileContent });
+  } catch (error) {
+    console.error("Error reading file:", error);
+    res.status(500).json({ error: "Error reading file" });
+  }
 }
