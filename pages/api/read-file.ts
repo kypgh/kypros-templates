@@ -24,6 +24,10 @@ export default function handler(
     .replace(/^(\.\.(\/|\\|$))+/, "");
   const fullPath = path.join(process.cwd(), normalizedPath);
 
+  console.log("Requested filePath:", filePath);
+  console.log("Normalized path:", normalizedPath);
+  console.log("Full path:", fullPath);
+
   // Check if the file exists
   if (!fs.existsSync(fullPath)) {
     res.status(404).json({ error: "File not found" });
