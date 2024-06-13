@@ -1,16 +1,10 @@
-import { Inter } from "next/font/google";
-import Head from "next/head";
-
-const inter = Inter({ subsets: ["latin"] });
+import { PageContainer } from "@/components/generic";
+import { H1 } from "@/components/typography";
 
 export default function Home() {
   return (
-    <>
-      <Head>
-        <title>Kypros Templates</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-      <main className={`${inter.className}`}></main>
-    </>
+    <PageContainer>
+      <H1>Home</H1>
+    </PageContainer>
   );
 }

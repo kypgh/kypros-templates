@@ -3,6 +3,7 @@ import { Flex, NavLink } from "./generic";
 import styled from "styled-components";
 import { H1 } from "./typography";
 import { useTheme } from "@/utils/hooks/useTheme";
+import navData from "@/config/navData";
 
 const NavOuter = styled.div`
   width: 280px;
@@ -70,8 +71,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <Flex $direction="column" $align="center" $gap={20}>
             <H1 $color={(theme) => theme.textPrimary}>Kypros Templates</H1>
             <Flex $direction="column" $width="100%" $gap={10}>
-              <StyleLink href={"/"}>Home</StyleLink>
-              <StyleLink href={"/flex"}>Flex</StyleLink>
+              {Object.entries(navData).map(([key, value]) => (
+                <StyleLink key={key} href={value}>
+                  {key}
+                </StyleLink>
+              ))}
+              {/* <StyleLink href={"/"}>Home</StyleLink>
+              <StyleLink href={"/flex"}>Flex</StyleLink> */}
             </Flex>
           </Flex>
           <ThemeButton onClick={toggleTheme}>Toggle Theme</ThemeButton>

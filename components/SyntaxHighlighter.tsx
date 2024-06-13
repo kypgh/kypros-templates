@@ -1,19 +1,23 @@
-import { useTheme } from "@/utils/hooks/useTheme";
-import { Prism } from "react-syntax-highlighter";
-import {
-  coldarkCold,
-  atomDark,
-} from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { Prism, SyntaxHighlighterProps } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
-interface SyntaxHighlighterProps {
+interface SyntaxHighlighter extends SyntaxHighlighterProps {
   children: string;
 }
 
-const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({ children }) => {
-  const { themeName } = useTheme();
-  const theme = themeName === "dark" ? atomDark : coldarkCold;
+const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
+  children,
+  ...rest
+}) => {
   return (
-    <Prism language="javascript" style={theme}>
+    <Prism
+      {...rest}
+      language="javascript"
+      style={vscDarkPlus}
+      customStyle={{
+        borderRadius: "7px",
+      }}
+    >
       {children}
     </Prism>
   );

@@ -4,7 +4,7 @@ import { Flex as FlexSC, PageContainer } from "../components/generic";
 import { Code, H2, Select } from "../components/typography";
 import { FlexEnums } from "@/config/cssEnums";
 
-const Flex = () => {
+const FlexPage = () => {
   const [direction, setDirection] = useState(FlexEnums.direction[0]);
   const [align, setAlign] = useState(FlexEnums.align[0]);
   const [justify, setJustify] = useState(FlexEnums.justify[0]);
@@ -13,15 +13,16 @@ const Flex = () => {
   const [width, setWidth] = useState("100%");
 
   const flexCode = `
-  const Example = () => {
-    return (
-      <Flex $direction="${direction}" $align="${align}" $justify="${justify}" $wrap="${wrap}" $gap={${gap}} $width="100%">
-        <div>Child 1</div>
-        <div>Child 2</div>
-        <div>Child 3</div>
-      </Flex>
-    );
-  };
+const Example = () => {
+  return (
+    <Flex $direction="${direction}" $align="${align}" $justify="${justify}" $wrap="${wrap}" $gap={${gap}} $width="100%">
+      <div>Child 1</div>
+      <div>Child 2</div>
+      <div>Child 3</div>
+    </Flex>
+  );
+};
+  
   `;
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -113,4 +114,4 @@ const Flex = () => {
   );
 };
 
-export default Flex;
+export default FlexPage;
