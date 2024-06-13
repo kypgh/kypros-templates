@@ -19,7 +19,9 @@ const FileViewer: React.FC<FileViewerProps> = () => {
     }
     const fetchFileContent = async () => {
       try {
-        const response = await fetch(`/api/read-file?filePath=${filePath}`);
+        const response = await fetch(
+          `/api/read-file?filePath=${encodeURIComponent(filePath)}`
+        );
         const data = await response.json();
         if (data.content) {
           setFileContent(data.content);

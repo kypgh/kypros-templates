@@ -18,7 +18,18 @@ export default function handler(
     return;
   }
 
-  const fullPath = path.join(process.cwd(), filePath);
+  // Normalize the path to prevent directory traversal attacks
+  const normalizedPath = path
+    .normalize(filePath)
+    .replace(/^(\.\.(\/|\\|$))+/, "");
+  const fullPath = path.join(process.cwd(), normalizedPath);
+
+  // Check if the file exists
+  if (!fs.existsSync(fullPath)) {
+    res.status(404).json({ error: "File not found" });
+    return;
+  }
+
   fs.readFile(fullPath, "utf8", (err, data) => {
     if (err) {
       res.status(500).json({ error: "Error reading file" });
