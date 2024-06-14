@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import useModal, { ModalState } from "../utils/hooks/useModal";
+import useModal, { ModalState } from "@/utils/hooks/useModal";
 
 const ModalSC = styled.div`
   position: fixed;

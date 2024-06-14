@@ -23,23 +23,8 @@ export default async function handler(
     const rootPath = process.cwd();
     const fullPath = path.join(rootPath, filePath);
 
-    console.log("rootPath", rootPath);
-    console.log("fullPath", fullPath);
-
-    // Log directory structure for debugging
-    console.log("Directory structure at rootPath:");
-    console.log(fs.readdirSync(rootPath).join(", "));
-
-    // Check if 'public' directory exists and log its contents
-    const publicPath = path.join(rootPath, "public");
-    if (fs.existsSync(publicPath)) {
-      console.log("Directory structure at publicPath:");
-      console.log(fs.readdirSync(publicPath).join(", "));
-    }
-
     // Check if the file exists
     if (!fs.existsSync(fullPath)) {
-      console.log("File does not exist:", fullPath);
       res.status(404).json({ error: "File not found" });
       return;
     }

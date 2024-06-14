@@ -1,0 +1,12 @@
+{
+  "filesToSync": [
+    {
+      "source": "components/generic.tsx",
+      "destination": "public/generated/generic.tsx"
+    },
+    {
+      "source": "components/Modal.tsx",
+      "destination": "public/generated/Modal.tsx"
+    }
+  ]
+}
