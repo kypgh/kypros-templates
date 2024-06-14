@@ -1,4 +1,4 @@
-import ModalComp from "@/components/Modal";
+import Modal from "@/components/Modal";
 import { Flex, PageContainer, SourceLink } from "@/components/generic";
 import { H2, H3 } from "@/components/typography";
 import styled from "styled-components";
@@ -45,7 +45,7 @@ const ModalContent = ({ modalData }: { modalData?: any }) => {
 const Example = () => {
     return (
       <Modal componentToShow={<ModalContent />}>
-        {({ openModal }) => <button onClick={() => openModal()}>Click Me!</button>}
+        {({ openModal }) => <button onClick={() => openModal()}>Click Me - No Data</button>}
       </Modal>
     );
 };
@@ -55,7 +55,7 @@ const ExampleWithData = () => {
     const data = ["Item 1", "Item 2", "Item 3"];
     return (
       <Modal componentToShow={<ModalContent />}>
-        {({ openModal }) => <button onClick={() => openModal(data)}>Click Me!</button>}
+        {({ openModal }) => <button onClick={() => openModal(data)}>Click Me - With Data</button>}
       </Modal>
     );
 };
@@ -71,31 +71,31 @@ const Btn = styled.button`
   cursor: pointer;
 `;
 
-const Modal = () => {
+const ModalPage = () => {
   const data = ["Item 1", "Item 2", "Item 3"];
 
   return (
     <PageContainer>
-      <SourceLink href="/source-code?filePath=components/Modal.tsx" />
+      <SourceLink href="/source-code?filePath=public/Modal.tsx" />
 
       <H2 $mb={10}>Code </H2>
       <SyntaxHighlighter>{modalCode}</SyntaxHighlighter>
       <H2 $mb={10}>Example</H2>
       <Flex $gap={20}>
-        <ModalComp componentToShow={<ModalContent />}>
+        <Modal componentToShow={<ModalContent />}>
           {({ openModal }) => (
             <Btn onClick={() => openModal()}>Click Me - No Data</Btn>
           )}
-        </ModalComp>
+        </Modal>
 
-        <ModalComp componentToShow={<ModalContent />}>
+        <Modal componentToShow={<ModalContent />}>
           {({ openModal }) => (
             <Btn onClick={() => openModal(data)}>Click Me - With Data</Btn>
           )}
-        </ModalComp>
+        </Modal>
       </Flex>
     </PageContainer>
   );
 };
 
-export default Modal;
+export default ModalPage;

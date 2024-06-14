@@ -1,4 +1,3 @@
-// pages/api/read-file.ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
@@ -23,6 +22,9 @@ export default async function handler(
     // Construct the full path
     const rootPath = process.cwd(); // This might need adjustment in a serverless environment like Vercel
     const fullPath = path.join(rootPath, filePath as string);
+
+    console.log("fullPath", fullPath);
+    console.log("rootPath", rootPath);
 
     // Check if the file exists
     if (!fs.existsSync(fullPath)) {

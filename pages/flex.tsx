@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import SyntaxHighlighter from "../components/SyntaxHighlighter";
 import {
-  Flex as FlexSC,
+  Flex,
   PageContainer,
   SourceLink,
 } from "../components/generic";
@@ -52,11 +52,11 @@ const Example = () => {
       <SourceLink href="/source-code?filePath=components/generic.tsx" />
       <H2>Code</H2>
       <SyntaxHighlighter>{flexCode}</SyntaxHighlighter>
-      <FlexSC $width="100%" $gap={50}>
-        <FlexSC $direction="column">
+      <Flex $width="100%" $gap={50}>
+        <Flex $direction="column">
           <H2 $mb={10}>Props</H2>
           {Object.entries(FlexEnums).map(([key, value]) => (
-            <FlexSC $mb={20} $gap={10} key={key}>
+            <Flex $mb={20} $gap={10} key={key}>
               <Code>${key}</Code>
               <Select onChange={handleChange}>
                 {value.map((val) => (
@@ -65,9 +65,9 @@ const Example = () => {
                   </option>
                 ))}
               </Select>
-            </FlexSC>
+            </Flex>
           ))}
-          <FlexSC $mb={20} $gap={10}>
+          <Flex $mb={20} $gap={10}>
             <Code>$gap</Code>
             <Select
               onChange={(e) => {
@@ -82,8 +82,8 @@ const Example = () => {
                 </option>
               ))}
             </Select>
-          </FlexSC>
-          <FlexSC $mb={20} $gap={10}>
+          </Flex>
+          <Flex $mb={20} $gap={10}>
             <Code>$width</Code>
             <Select
               onChange={(e) => {
@@ -96,11 +96,11 @@ const Example = () => {
                 </option>
               ))}
             </Select>
-          </FlexSC>
-        </FlexSC>
-        <FlexSC $direction="column" $width="100%">
+          </Flex>
+        </Flex>
+        <Flex $direction="column" $width="100%">
           <H2 $mb={10}>Example</H2>
-          <FlexSC
+          <Flex
             style={{ border: "1px solid red" }}
             $direction={direction}
             $align={align}
@@ -112,9 +112,9 @@ const Example = () => {
             <div>Child 1</div>
             <div>Child 2</div>
             <div>Child 3</div>
-          </FlexSC>
-        </FlexSC>
-      </FlexSC>
+          </Flex>
+        </Flex>
+      </Flex>
     </PageContainer>
   );
 };
