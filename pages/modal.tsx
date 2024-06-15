@@ -76,7 +76,7 @@ const ModalPage = () => {
 
   return (
     <PageContainer>
-      <SourceLink href="/source-code?filePath=generated/Modal.tsx" />
+      <SourceLink href="/source-code?filePath=public/generated/Modal.tsx" />
 
       <H2 $mb={10}>Code </H2>
       <SyntaxHighlighter>{modalCode}</SyntaxHighlighter>
