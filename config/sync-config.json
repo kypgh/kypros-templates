@@ -7,6 +7,10 @@
     {
       "source": "components/Modal.tsx",
       "destination": "public/generated/Modal.tsx"
+    },
+    {
+      "source": "components/Tabs.tsx",
+      "destination": "public/generated/Tabs.tsx"
     }
   ]
 }

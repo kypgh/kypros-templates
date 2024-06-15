@@ -11,7 +11,7 @@ export const SourceLink = styled(Link)`
   padding: 2px;
   border-radius: 5px;
   background-color: ${({ theme }) => theme.primary};
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 20px;
 
