@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
-import { Flex, NavLink } from "./generic";
+import { Flex, NavLink } from "@/components/generic";
 import styled from "styled-components";
-import { H1 } from "./typography";
+import { H1 } from "@/components/typography";
 import { useTheme } from "@/utils/hooks/useTheme";
 import navData from "@/config/navData";
 
